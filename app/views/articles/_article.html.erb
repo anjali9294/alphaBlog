@@ -9,6 +9,10 @@
     <% if article.user %>  
     by <%= link_to article.user.username,user_path(article.user)%>
     <% end %>
+    <% if article.categories.any? %>  
+  <div class="mt-2"> <%= render article.categories %></div>
+    <% end %>
+
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
@@ -20,7 +24,7 @@
     <% end %>
       </div>
     <div class="card-footer text-muted">
-      <small>Created <%= time_ago_in_words(article.created_at) %>age,
+      <small>Created <%= time_ago_in_words(article.created_at) %>ago,
       edited <%= time_ago_in_words(article.updated_at) %>ego</small>
     </div>
   </div>
